@@ -1,3 +1,7 @@
+output "extended_location_custom_locations_id" {
+  description = "Map of id values across all extended_location_custom_locations, keyed the same as var.extended_location_custom_locations"
+  value       = { for k, v in azurerm_extended_location_custom_location.extended_location_custom_locations : k => v.id }
+}
 output "extended_location_custom_locations_authentication" {
   description = "Map of authentication values across all extended_location_custom_locations, keyed the same as var.extended_location_custom_locations"
   value       = { for k, v in azurerm_extended_location_custom_location.extended_location_custom_locations : k => v.authentication }
