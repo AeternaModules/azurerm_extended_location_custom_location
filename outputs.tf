@@ -4,7 +4,7 @@ output "extended_location_custom_locations_id" {
 }
 output "extended_location_custom_locations_authentication" {
   description = "Map of authentication values across all extended_location_custom_locations, keyed the same as var.extended_location_custom_locations"
-  value       = { for k, v in azurerm_extended_location_custom_location.extended_location_custom_locations : k => v.authentication if v.authentication != null && length(v.authentication) > 0 }
+  value       = { for k, v in azurerm_extended_location_custom_location.extended_location_custom_locations : k => one(v.authentication) if v.authentication != null && length(v.authentication) > 0 }
 }
 output "extended_location_custom_locations_cluster_extension_ids" {
   description = "Map of cluster_extension_ids values across all extended_location_custom_locations, keyed the same as var.extended_location_custom_locations"
